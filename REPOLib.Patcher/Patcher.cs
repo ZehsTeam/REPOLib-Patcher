@@ -218,14 +218,14 @@ internal static class Patcher
             {
                 string methodSignature = method.FullName.Substring(method.FullName.IndexOf(' ') + 1);
 
-                if (methodSignature.StartsWith("REPOLib.Modules.Items"))
-                {
-                    Logger.LogInfo($"");
-                    Logger.LogInfo($"newSig: \"{newSig}\"");
-                    Logger.LogInfo($"REPOLib method: \"{method.FullName}\"");
-                    Logger.LogInfo($"ReturnType: \"{method.ReturnType.FullName}\"");
-                    Logger.LogInfo($"");
-                }
+                //if (methodSignature.StartsWith("REPOLib.Modules.Items"))
+                //{
+                //    Logger.LogInfo($"");
+                //    Logger.LogInfo($"newSig: \"{newSig}\"");
+                //    Logger.LogInfo($"REPOLib method: \"{method.FullName}\"");
+                //    Logger.LogInfo($"ReturnType: \"{method.ReturnType.FullName}\"");
+                //    Logger.LogInfo($"");
+                //}
 
                 if (methodSignature == newSig)
                 {
