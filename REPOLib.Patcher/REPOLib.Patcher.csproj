@@ -5,14 +5,14 @@
     <LangVersion>latest</LangVersion>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     
-    <AssemblyName>com.github.zehsteam.$(MSBuildProjectName)</AssemblyName> <!-- PLUGIN_GUID -->
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName> <!-- PLUGIN_GUID -->
     <Product>$(MSBuildProjectName)</Product>                               <!-- PLUGIN_NAME -->
     <Version>1.0.0</Version>                                               <!-- PLUGIN_VERSION -->
     <Authors>Zehs</Authors>
     <Description></Description>
     <Copyright>Copyright © 2025 Zehs</Copyright>
     
-    <RootNamespace>com.github.zehsteam.$(MSBuildProjectName)</RootNamespace>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
     
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     
@@ -45,8 +45,12 @@
     <PackageReference Include="BepInEx.Core" Version="5.4.21" PrivateAssets="all" Publicize="true" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all" />
     <!--<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />-->
-    <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" IncludeAssets="compile" PrivateAssets="all" />
-    <PackageReference Include="R.E.P.O.GameLibs.Steam" Version="0.3.0-ngd.0" PrivateAssets="all" />
+    <!--<PackageReference Include="UnityEngine.Modules" Version="2022.3.62" IncludeAssets="compile" PrivateAssets="all" />-->
+    <!--<PackageReference Include="R.E.P.O.GameLibs.Steam" Version="0.3.0-ngd.0" PrivateAssets="all" />-->
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
   
   <!-- Gale profile names -->
@@ -65,9 +69,9 @@
   
   <!-- Copy files to Gale patcher folder -->
   <Target Name="CopyToGalePatcherFolder" AfterTargets="PostBuildEvent">
-    <Message Condition="Exists('$(PatcherFolder)')" Text="Copying to Gale patcher folders" Importance="high" />
+    <Message Condition="Exists('$(BepInExPatchersFolder)')" Text="Copying to Gale patcher folders" Importance="high" />
     
     <!-- PatcherFolder --> 
-    <Copy Condition="Exists('$(PatcherFolder)')" DestinationFolder="$(PatcherFolder)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" SourceFiles="$(TargetPath)" />
+    <Copy Condition="Exists('$(BepInExPatchersFolder)')" DestinationFolder="$(PatcherFolder)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" SourceFiles="$(TargetPath)" />
   </Target>
 </Project>
